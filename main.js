@@ -28,8 +28,9 @@ btn.onclick = function(e) {
     updateView();
 }
 
-function del_tt(tid){
-  console.log(`delete ${tid}`)
+function del_tt(ind){
+    tickets.splice(ind,1);
+    updateView();
 }
 
 function updateView() {
@@ -93,7 +94,7 @@ function updateView() {
         else if(alarm === "cell")
             rf = "Cell Down";
         let tt = document.createElement("li");
-        tt.innerHTML+= `<button type="button" class="close_btn" onclick="del_tt(${id})"><img src="images/close.svg" alt=""></button>`;
+        tt.innerHTML+= `<button type="button" class="close_btn" onclick="del_tt(${i})"><img src="images/close.svg" alt=""></button>`;
         tt.append(`${site } cascade ${cascade } sites || ${rf || alarm }`);
         document.getElementsByClassName(office )[0].append(tt)
         if(alarm === "dwn" || alarm === "cell"){

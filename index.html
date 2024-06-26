@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L1 NOC System</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="row m-3">
+      <div class="col">
+        <form class="row">
+          <div class="col">
+            <input
+              type="search"
+              name="search"
+              class="input"
+              placeholder="Enter Site ID"
+            />
+            <input
+              type="number"
+              name="cascade"
+              class="input"
+              placeholder="Number of Cascades"
+            />
+            <select name="Office" class="input">
+              <option value="Aswan">Aswan</option>
+              <option value="Edfo">Edfo</option>
+              <option value="Luxor">Luxor</option>
+              <option value="Qena">Qena</option>
+              <option value="Sohag">Sohag</option>
+              <option value="Assiut">Assiut</option>
+              <option value="New-Valley">New-Valley</option>
+              <option value="Menya">Menya</option>
+              <option value="Banysweef">Banysweef</option>
+              <option value="Fayoum">Fayoum</option>
+              <option value="Ras-Ghareb">Ras-Ghareb</option>
+              <option value="Hurghada">Hurghada</option>
+              <option value="Marsa-Allam">Marsa-Allam</option>
+            </select>
+            <select name="source" class="input">
+              <option value="cmr">Commercial</option>
+              <option value="gen">VF Generator</option>
+              <option value="egen">ET Generator</option>
+              <option value="ogen">Orange Generator</option>
+            </select>
+          </div>
+          <div class="col">
+            <select name="alarm" class="input">
+              <option value="pwr">Power</option>
+              <option value="ht">High Temp</option>
+              <option value="dwn">Down</option>
+              <option value="cell">Cell Down</option>
+            </select>
+            <input type="datetime-local" name="faultTime" id="faultTime" />
+            <input
+              type="text"
+              class="input"
+              name="rc"
+              placeholder="Enter Resolution Fault"
+            />
+            <input type="submit" name="create" value="Add TT" />
+            
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+    <div class="important row">
+
+      </div>
+      
+      <div class="results row g-3 mt-2">
+        
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

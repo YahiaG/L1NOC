@@ -37,36 +37,36 @@ function updateView() {
     localStorage.savedTickets = JSON.stringify(tickets);
     results.innerHTML="";
     document.getElementsByClassName("important")[0].innerHTML=`
-        <div class="col">
+        <div class="col-md-6 col-lg-4 col-xl-3">
           <div class="list">
             <h3>Down Sites</h3>
             <ul class="sa"></ul>
           </div>
         </div>
-        <div class="col">
-          <div class="list">
-            <h3>HC Power Sites</h3>
-            <ul class="hc"></ul>
-            </div>
-            </div>
-            <div class="col">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="list">
-            <h3>High Temp Sites</h3>
-            <ul class="ht"></ul>
+                <h3>HC Power Sites</h3>
+                <ul class="hc"></ul>
             </div>
-            </div>
-            <div class="col">
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="list">
-            <h3>Generator Power Sites</h3>
-            <ul class="gen"></ul>
-          </div>
+                <h3>High Temp Sites</h3>
+                <ul class="ht"></ul>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="list">
+                <h3>Generator Power Sites</h3>
+                <ul class="gen"></ul>
+            </div>
         </div>`;
 
     for(let i = 0; i < tickets.length; i++){
         let {id,site,cascade,office,alarm,source,faultTime,rc} = tickets[i];
         if(document.getElementsByClassName(office)[0]=== undefined) {
             let col = document.createElement("div");
-            col.classList.add("col");
+            col.className = `col-md-6 col-lg-4 col-xl-3`;
             let newOffice = document.createElement("div");
             results.append(col);
             newOffice.classList.add("list");

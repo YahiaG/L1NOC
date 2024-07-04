@@ -5,6 +5,8 @@
 }
 body {
     background-color: #EEE;
+    font-family: "Work Sans", sans-serif;
+
 }
 input[type="submit"] {
     background-color: gray;
@@ -35,6 +37,7 @@ ul {
 li {
     /* display: flex;
     justify-content: space-between; */
+    overflow: hidden;
 }
 .close_btn {
     width: 20px;
@@ -45,4 +48,9 @@ li {
 }
 .close_btn img {
     width: 100%;
+}
+.delay-bar{
+    height: 3px;
+    width: 30%;
+    background-color: #aeff3e;
 }

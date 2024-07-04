@@ -10,7 +10,7 @@ if(localStorage.savedTickets){
 
 document.querySelector("[name='faultTime']").addEventListener("focus", function() {
   let d = new Date();
-  this.value = `${d.getFullYear()}-${(d.getMonth()<10?'0':'')+d.getMonth()}-${(d.getDate()<10?'0':'')+d.getDate()}T${(d.getHours()<10?'0':'')+d.getHours()}:${(d.getMinutes()<10?'0':'')+d.getMinutes()}`
+  this.value = `${d.getFullYear()}-${(d.getMonth()<10?'0':'')+(d.getMonth() + 1)}-${(d.getDate()<10?'0':'')+d.getDate()}T${(d.getHours()<10?'0':'')+d.getHours()}:${(d.getMinutes()<10?'0':'')+d.getMinutes()}`
 })
 btn.onclick = function(e) {
     e.preventDefault()
@@ -23,6 +23,7 @@ btn.onclick = function(e) {
         source : document.querySelector("[name='source']").value,
         faultTime : document.querySelector("[name='faultTime']").value,
         rc : document.querySelector("[name='rc']").value,
+        reported: false,
     })
     tickets.sort((a,b)=>b.cascade - a.cascade);
     updateView();
@@ -63,7 +64,7 @@ function updateView() {
         </div>`;
 
     for(let i = 0; i < tickets.length; i++){
-        let {id,site,cascade,office,alarm,source,faultTime,rc} = tickets[i];
+        let {id,site,cascade,office,alarm,source,faultTime,rc,reported} = tickets[i];
         if(document.getElementsByClassName(office)[0]=== undefined) {
             let col = document.createElement("div");
             col.className = `col-md-6 col-lg-4 col-xl-3`;
@@ -96,6 +97,16 @@ function updateView() {
         let tt = document.createElement("li");
         tt.innerHTML+= `<button type="button" class="close_btn" onclick="del_tt(${i})"><img src="images/close.svg" alt=""></button>`;
         tt.append(`${site } cascade ${cascade } sites || ${rf || alarm }`);
+        let delay = Math.trunc((Date.now() - (new Date(faultTime)).getTime()) / 60000)
+        tt.innerHTML+= `<div class ="delay-bar" style="width:${delay*100/180}%"></div>`
+        console.log(delay)
+        if(!reported){
+            tt.style.color = "white";
+            tt.onclick = ()=>{
+                tickets[i].reported = true;
+                updateView()
+            }
+        }
         document.getElementsByClassName(office )[0].append(tt)
         if(alarm === "dwn" || alarm === "cell"){
             let copy = tt.cloneNode(true);
@@ -117,4 +128,15 @@ function updateView() {
         }
     }
 }
+
+
+// let handler = setInterval(()=>{ 
+//     console.log(document.querySelector(".storeapp-details-link").click());
+//     setTimeout(()=>{
+//         if(document.querySelector(".messageBoxPopup ").style.display === 'block')
+//             document.querySelector(".messageBoxAction .button").click();
+//         else
+//             clearInterval(handler);
+//     },5000)
+// },50000)
 
